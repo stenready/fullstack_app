@@ -18,8 +18,8 @@ passportMiddlware(passport)
 app.use('/api/auth/', require('./routes/auth'))
 app.use('/api/posts/', require('./routes/posts'))
 
-// app.use(express.static(path.join(__dirname, 'dist')))
-// app.get(/.*/, (req, res) => res.sendFile(path.join(__dirname, 'dist', 'index.html')))
+app.use(express.static(path.join(__dirname, 'dist')))
+app.get(/.*/, (req, res) => res.sendFile(path.join(__dirname, 'dist', 'index.html')))
 
 const PORT=process.env.PORT||10000
 
