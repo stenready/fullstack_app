@@ -4,6 +4,7 @@ const router=Router()
 const { check, validationResult }=require('express-validator')
 const bcrypt=require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const config = require('../config/index')
 
 const User=require('../models/User')
 
@@ -33,8 +34,8 @@ router.post(
 
       const token = jwt.sign(
         { userId: user.id },
-        'the_secred_key',
-        { expiresIn: '10h' }
+        config.secret_key,
+        { expiresIn:config.time_acsess_token }
       )
 
       res.status(201).json({ user, token: `Bearer ${token}`, message: 'User is created', })
@@ -65,9 +66,10 @@ router.post(    //логин пользователя
 
     const token = jwt.sign(
       { userId: user.id },
-      'the_secred_key',
-      { expiresIn: '10h' }
+      config.secret_key,
+      { expiresIn:config.time_acsess_token }
     )
+    console.log(token)
     res.json({ token: `Bearer ${token}`, user })
 
 

@@ -10,7 +10,7 @@
                 <v-spacer />
               </v-toolbar>
               <v-card-text>
-                <v-form ref="form" v-model="valid" lazy-validation>
+                <v-form ref="form" v-model="valid">
                   <v-text-field
                     v-model="email"
                     :rules="emailRules"
@@ -86,7 +86,6 @@ export default {
         })
           .then(res => {
             this.$router.push("posts");
-            console.log('secsee login' + ' ' + res);
           })
           .catch(err => {
             this.load = false;

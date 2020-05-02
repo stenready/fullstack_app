@@ -1,7 +1,8 @@
 const { Strategy, ExtractJwt }=require('passport-jwt')
 const User=require('../models/User')
+const config = require('../config')
 
-const options={ jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), secretOrKey: 'the_secred_key' }
+const options={ jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), secretOrKey: config.secret_key  }
 
 
 const authoken=(passport) => {
