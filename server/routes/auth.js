@@ -69,7 +69,6 @@ router.post(    //логин пользователя
       config.secret_key,
       { expiresIn:config.time_acsess_token }
     )
-    console.log(token)
     res.json({ token: `Bearer ${token}`, user })
 
 

@@ -110,10 +110,7 @@ export default {
         .then(res => {
           this.$router.push("/posts");
         })
-        .catch(err => {
-          const flag = this.auth_error_401(err);
-          if (flag) this.$router.push("/login");
-        });
+        .catch(err => {});
     },
     updateHandler(id) {
       const title = this.title || this.getOnePost.title;
@@ -130,10 +127,7 @@ export default {
           .then(res => {
             this.$router.push("/posts");
           })
-          .catch(err => {
-            const flag = this.auth_error_401(err);
-            if (flag) this.$router.push("/login");
-          });
+          .catch(err => {});
       }
     },
     canselUpdate() {
@@ -165,10 +159,7 @@ export default {
       .then(res => {
         this.loading = true;
       })
-      .catch(err => {
-        const flag = this.auth_error_401(err);
-        if (flag) this.$router.push("/login");
-      });
+      .catch(err => {});
   }
 };
 </script>

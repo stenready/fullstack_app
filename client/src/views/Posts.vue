@@ -84,19 +84,13 @@ export default {
       if (value == "all") {
         this.fetch_all_posts()
           .then(() => (this.loading = true))
-          .catch(err => {
-            const flag = this.auth_error_401(err);
-            if (flag) this.$router.push("/login");
-          });
+          .catch(err => {});
       } else {
         this.fetch_only_my_posts()
           .then(res => {
             this.loading = true;
           })
-          .catch(err => {
-            const flag = this.auth_error_401(err);
-            if (flag) this.$router.push("/login");
-          });
+          .catch(err => {});
       }
     }
   },
@@ -113,10 +107,7 @@ export default {
           this.loading = true;
           this.selected = "all";
         })
-        .catch(err => {
-          const flag = this.auth_error_401(err);
-          if (flag) this.$router.push("/login");
-        });
+        .catch(err => {});
     }
     if (this.fetch_triger == "my") {
       this.fetch_only_my_posts()
@@ -124,10 +115,7 @@ export default {
           this.loading = true;
           this.selected = "my";
         })
-        .catch(err => {
-          const flag = this.auth_error_401(err);
-          if (flag) this.$router.push("/login");
-        });
+        .catch(err => {});
     }
   }
 };

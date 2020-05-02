@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <v-container>
-      <v-row class=" mx-auto">
+      <v-row class="mx-auto">
         <v-col md="7" sm="12" class="mx-auto">
           <h1 class="display-1 mb-2">Создайте Ваш пост:</h1>
           <v-form ref="form" v-model="valid" lazy-validation>
@@ -24,7 +24,7 @@
 
 <script>
 // @ is an alias to /src
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Create",
   data() {
@@ -39,21 +39,18 @@ export default {
   },
   components: {},
   methods: {
-    ...mapActions(['store_post', "auth_error_401"]),
-    donePost(){
-      if( this.$refs.form.validate() ) {
-        this.load = true
+    ...mapActions(["store_post", "auth_error_401"]),
+    donePost() {
+      if (this.$refs.form.validate()) {
+        this.load = true;
         this.store_post({
           title: this.title,
           body: this.text
         })
-        .then( res=> {
-          this.$router.push('posts')
-        } )
-        .catch( err => {
-          this.auth_error_401(err)
-          this.$router.push('/login')
-        } )
+          .then(res => {
+            this.$router.push("posts");
+          })
+          .catch(err => {});
       }
     }
   }

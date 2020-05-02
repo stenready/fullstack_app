@@ -1,4 +1,5 @@
-import axios from 'axios'
+// import axios from 'axios'
+import axios from '../../plugins/axios.instance'
 export default {
   state: {
     auth_triger: false,
@@ -16,10 +17,6 @@ export default {
     SET_USER_DATA(state, data) {
       state.auth_user=data.user
       state.auth_triger=true
-      const token=data.token
-      const { email, name, _id }=data.user
-      localStorage.setItem('user', JSON.stringify({ token, email, id: _id, name }))
-      axios.defaults.headers.common['Authorization']=token
     },
     CLEAR_AUTH_DATA(state) {
       state.auth_user = null
@@ -37,12 +34,6 @@ export default {
       const res=await axios.post('api/auth/login', data)
       ctx.commit('SET_USER_DATA', res.data)
     },
-    auth_error_401(ctx, err) {
-      if( err.response.status === 401 ) {
-        ctx.commit('CLEAR_AUTH_DATA')
-        return true
-      }
-    }
 
   },
 }
