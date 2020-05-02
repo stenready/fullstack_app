@@ -1,4 +1,5 @@
-import axios from 'axios'
+// import axios from 'axios'
+import axios from '../../plugins/axios.instance'
 export default {
   state: {
     posts: [],
