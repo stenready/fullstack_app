@@ -7,11 +7,15 @@ const passport = require('passport')
 
 const passportMiddlware = require('./middleware/passport')
 
+const corsOptions = {
+  origin: 'https://fullstack-junior-app.herokuapp.com/'
+}
 
 const app=express()
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
-app.use(cors())
+
+app.use(cors(corsOptions))
 
 app.use(passport.initialize())
 passportMiddlware(passport)

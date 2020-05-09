@@ -3,7 +3,7 @@ import store from '../store/index'
 import router from '../router/index'
 
 const instanse=axios.create({
-  baseURL: 'http://localhost:10000'||'',
+  baseURL: 'https://fullstack-junior-app.herokuapp.com/' || 'http://localhost:10000',
   // headers: { 'Content-Type': 'application/json' }
 })
 
